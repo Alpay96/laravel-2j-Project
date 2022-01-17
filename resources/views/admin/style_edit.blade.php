@@ -2,13 +2,7 @@
 
 @section('title', 'Edit Style')
 @section('javascript')
-
-    <!-- include libraries(jQuery) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-    <!-- include summernote css/js -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
 @endsection
 
 @section('content')
@@ -23,7 +17,7 @@
             <br>
             <div class="">
                 <br>
-                <form role="form" action="{{route('admin_style_update', ['id'=>$data->id])}}" method="post">
+                <form role="form" action="{{route('admin_style_update', ['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="">
                         <br>
@@ -43,12 +37,18 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Image</label>
+                            <input type="file" name="image" value="{{$data->image}}" class="form-control">
+                            @if($data->image)
+                                <img src="{{Storage::url($data->image)}}" height="130" alt="">
+                            @endif
+                        </div>
+
+                        <div class="form-group">
                             <label>Detail</label>
                             <textarea id="detail" name="detail">{{$data->detail}}</textarea>
                             <script>
-                                $(document).ready(function () {
-                                    $('#detail').summernote();
-                                });
+                                CKEDITOR.replace( 'detail' );
                             </script>
                         </div>
 

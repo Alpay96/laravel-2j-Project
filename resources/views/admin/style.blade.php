@@ -54,6 +54,7 @@
                                     <th>Id</th>
                                     <th>Title</th>
                                     <th>Image</th>
+                                    <th>Image Gallery</th>
                                     <th>Status</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -64,11 +65,24 @@
                                     <tr>
                                         <td>{{$rs->id}}</td>
                                         <td>{{$rs->title}}</td>
-                                        <td>{{$rs->image}}</td>
+
+                                        <td>
+                                            @if($rs->image)
+                                                <img src="{{Storage::url($rs->image)}}" height="70" alt="">
+                                            @endif
+                                        </td>
+
+                                        <td><a href="{{route('admin_image_add', ['style_id' =>$rs->id])}}"
+                                            onclick="return !window.open(this.href, '', 'top=50 left=100 width=1100 height=700')">
+                                                <img src="{{asset('assets/admin/images')}}/gallery.png" height="70"></a>
+                                        </td>
                                         <td>{{$rs->status}}</td>
                                         <td><a href="{{route('admin_style_edit', ['id'=> $rs->id])}}"> Edit </a></td>
                                         <td><a href="{{route('admin_style_delete', ['id'=> $rs->id])}}"
-                                               onclick="return confirm('Delete ! Are you sure?')"> Delete </a></td>
+                                               onclick="return confirm('Delete ! Are you sure?')">
+                                                <a href="{{route('admin_image_add', ['style_id' =>$rs->id])}}">
+                                                    <img src="{{asset('assets/admin/images')}}/delete.png" height="40"></a>
+                                            </a></td>
                                     </tr>
                                 @endforeach
 
@@ -118,20 +132,24 @@
     <script src="{{ asset('assets')}}/admin/build/js/custom.min.js"></script>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('assets')}}/admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ asset('assets')}}/admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="{{ asset('assets')}}/admin/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="{{ asset('assets')}}/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Datatables -->
-    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('assets')}}/admin/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('assets')}}/admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css"
+          rel="stylesheet">
+    <link href="{{ asset('assets')}}/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css"
+          rel="stylesheet">
+    <link href="{{ asset('assets')}}/admin/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css"
+          rel="stylesheet">
+    <link href="{{ asset('assets')}}/admin/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css"
+          rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="{{ asset('assets')}}/admin//build/css/custom.min.css" rel="stylesheet">
 @endsection

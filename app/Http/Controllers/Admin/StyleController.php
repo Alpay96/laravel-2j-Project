@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Style;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class StyleController extends Controller
 {
@@ -49,6 +50,10 @@ class StyleController extends Controller
         $data->status = $request->input('status');
         $data->user_id = Auth::id();
         $data->detail = $request->input('detail');
+        if ($request->file('image') !== null) {
+            $data->image = Storage::putFile('images', $request->file('image'));
+        }
+
         $data->save();
         return redirect()->route('admin_style');
     }
@@ -94,6 +99,9 @@ class StyleController extends Controller
         $data->status = $request->input('status');
         $data->user_id = Auth::id();
         $data->detail = $request->input('detail');
+        if ($request->file('image') !== null) {
+            $data->image = Storage::putFile('images', $request->file('image'));
+        }
         $data->save();
         return redirect()->route('admin_style');
     }
