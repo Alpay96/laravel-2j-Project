@@ -35,7 +35,6 @@
     <![endif]-->
     @yield('css')
     @yield('headerjs')
-
 </head>
 
 <body class="barber_version">

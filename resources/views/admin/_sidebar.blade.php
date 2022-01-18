@@ -21,7 +21,7 @@
                         @auth
                             <a href="#" class="d-block">{{Auth::user()->name }}</a>
                             <br><br>
-                            <a href="{{route('admin_logout') }}" class="d-block">Logout</a>
+                            <a href="{{route('logout') }}" class="d-block">Logout</a>
                         @endauth
                     </div>
                 </h2>

@@ -1,11 +1,12 @@
+@php
+    $setting = \App\Http\Controllers\HomeController::getsetting()
+@endphp
 @extends('layouts.home')
 
-@section('title', 'Laravel E-Ticaret Sitesi')
-@section('description')
-    Kuaför Rezervasyonunun en hızlı yapıldığı tek site.
-@endsection
+@section('title', $setting->title)
+@section('description'){{$setting->description}} @endsection
 
-@section('keywords', 'kuaför, saç stilleri, saç modelleri, kuaför rezervasyonu' )
+@section('keywords', $setting->keywords )
 
 @section('content')
     <!-- Page Content -->
@@ -79,11 +80,12 @@
                                     </ul>
                                 </div>
                                 <div class="tab-pane fade" id="tab_c">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour, or randomised words
-                                        which don't look even slightly believable. If you are going to use a passage of
-                                        Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the
-                                        middle of text.</p>
+                                    <h3>Adres Bilgilerimiz</h3>
+                                    {{$setting->company}} <br>
+                                    {{$setting->address}} <br>
+                                    <strong>Telefon: </strong> {{$setting->phone}} <br>
+                                    <strong>Fax: </strong> {{$setting->fax}} <br>
+                                    <strong>E-Mail: </strong> {{$setting->email}} <br>
                                 </div>
                             </div><!-- tab content -->
                         </div>
@@ -306,10 +308,14 @@
                                      class="img-responsive">
                                 <div class="social-up-hover">
                                     <div class="footer-social">
-                                        <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" class="btn grd1"><i class="fa fa-github"></i></a>
-                                        <a href="#" class="btn grd1"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" class="btn grd1"><i class="fa fa-linkedin"></i></a>
+                                        @if($setting->facebook !=null) <a href="{{$setting->facebook}}" target="_blank"
+                                        class="btn grd1"><i class="fa fa-facebook"></i></a> @endif
+                                        @if($setting->instagram !=null)<a href="{{$setting->instagram}}" target="_blank"
+                                        class="btn grd1"><i class="fa fa-instagram"></i></a> @endif
+                                        @if($setting->twitter !=null) <a href="{{$setting->twitter}}" target="_blank"
+                                        class="btn grd1"><i class="fa fa-twitter"></i></a> @endif
+                                        @if($setting->youtube !=null) <a href="{{$setting->youtube}}" target="_blank"
+                                        class="btn grd1"><i class="fa fa-youtube"></i></a> @endif
                                     </div>
                                 </div>
                             </div>
@@ -335,10 +341,15 @@
                                      class="img-responsive">
                                 <div class="social-up-hover">
                                     <div class="footer-social">
-                                        <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" class="btn grd1"><i class="fa fa-github"></i></a>
-                                        <a href="#" class="btn grd1"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" class="btn grd1"><i class="fa fa-linkedin"></i></a>
+                                        @if($setting->facebook !=null) <a href="{{$setting->facebook}}" target="_blank"
+                                        class="btn grd1"><i
+                                                class="fa fa-facebook"></i></a> @endif
+                                        @if($setting->instagram !=null)<a href="{{$setting->instagram}}" target="_blank"
+                                        class="btn grd1"><i class="fa fa-instagram"></i></a> @endif
+                                        @if($setting->twitter !=null) <a href="{{$setting->twitter}}" target="_blank"
+                                        class="btn grd1"><i class="fa fa-twitter"></i></a> @endif
+                                        @if($setting->youtube !=null) <a href="{{$setting->youtube}}" target="_blank"
+                                        class="btn grd1"><i class="fa fa-youtube"></i></a> @endif
                                     </div>
                                 </div>
                             </div>
@@ -364,10 +375,14 @@
                                      class="img-responsive">
                                 <div class="social-up-hover">
                                     <div class="footer-social">
-                                        <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" class="btn grd1"><i class="fa fa-github"></i></a>
-                                        <a href="#" class="btn grd1"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" class="btn grd1"><i class="fa fa-linkedin"></i></a>
+                                        @if($setting->facebook !=null) <a href="{{$setting->facebook}}" target="_blank"
+                                        class="btn grd1"><i class="fa fa-facebook"></i></a> @endif
+                                        @if($setting->instagram !=null)<a href="{{$setting->instagram}}" target="_blank"
+                                        class="btn grd1"><i class="fa fa-instagram"></i></a> @endif
+                                        @if($setting->twitter !=null) <a href="{{$setting->twitter}}" target="_blank"
+                                        class="btn grd1"><i class="fa fa-twitter"></i></a> @endif
+                                        @if($setting->youtube !=null) <a href="{{$setting->youtube}}" target="_blank"
+                                        class="btn grd1"><i class="fa fa-youtube"></i></a> @endif
                                     </div>
                                 </div>
                             </div>

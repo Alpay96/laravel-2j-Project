@@ -1,3 +1,6 @@
+@php
+    $setting = \App\Http\Controllers\HomeController::getsetting()
+@endphp
 <!--FOOTER -->
 <div id="testimonials" class="parallax section db parallax-inner-bg">
     <div class="container">
@@ -82,14 +85,12 @@
         <div class="footer-distributed">
             <div class="footer-left">
                 <p class="footer-links">
-                    <a href="#">Home</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Pricing</a>
-                    <a href="#">About</a>
-                    <a href="#">Faq</a>
-                    <a href="#">Contact</a>
+                    <a href="{{route('homepage')}}">Home</a>
+                    <a href="{{route('aboutus')}}">About</a>
+                    <a href="{{route('fag')}}">Faq</a>
+                    <a href="{{route('contact')}}">Contact</a>
                 </p>
-                <p class="footer-company-name">All Rights Reserved. &copy; 2022 <a href="#">StyleBarber</a> Design By : Alpay Ustalar</p>
+                <p class="footer-company-name">All Rights Reserved. &copy; 2022 {{$setting->company}} Design By : Alpay Ustalar</p>
             </div>
         </div>
     </div><!-- end container -->

@@ -21,7 +21,7 @@
                             </a>
                         </li>
                         <li><a href="javascript:;">Help</a></li>
-                        <li><a href="{{route('admin_logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                        <li><a href="{{route('logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                     </ul>
                 </li>
 
@@ -31,6 +31,7 @@
                         <i class="fa fa-envelope-o"></i>
                         <span class="badge bg-green">6</span>
                     </a>
+
                     <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                         <li>
                             <a>
@@ -44,6 +45,7 @@
                         </span>
                             </a>
                         </li>
+
                         <li>
                             <a>
                                 <span class="image"><img src="{{ asset('assets')}}/admin/production/images/img.jpg" alt="Profile Image"/></span>
@@ -56,6 +58,7 @@
                         </span>
                             </a>
                         </li>
+
                         <li>
                             <a>
                                 <span class="image"><img src="{{ asset('assets')}}/admin/production/images/img.jpg" alt="Profile Image"/></span>
@@ -68,18 +71,7 @@
                         </span>
                             </a>
                         </li>
-                        <li>
-                            <a>
-                                <span class="image"><img src="{{ asset('assets')}}/admin/production/images/img.jpg" alt="Profile Image"/></span>
-                                <span>
-                          <span>{{Auth::user()->name }}</span>
-                          <span class="time">15 mins ago</span>
-                        </span>
-                                <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                            </a>
-                        </li>
+
                         <li>
                             <div class="text-center">
                                 <a>

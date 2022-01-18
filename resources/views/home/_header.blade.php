@@ -1,3 +1,7 @@
+@php
+    $setting = \App\Http\Controllers\HomeController::getsetting()
+@endphp
+
 <!-- LOADER -->
 <div id="preloader">
     <div class="cube-wrapper">
@@ -14,11 +18,18 @@
     </div>
 </div><!-- end loader -->
 <!-- END LOADER -->
-
-<div class="top-add alert alert-light alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>Success!</strong> This alert box could indicate a successful or positive action.
-</div>
+@auth
+    <div class="top-add alert alert-light alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{Auth::user()->name}}</strong> Hoş geldiniz
+    </div>
+@endauth
+@guest
+    <div class="top-add alert alert-light alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Hala üye değil misiniz? Hemen üye olun ve fırsatların tadını çıkartın.</strong>
+    </div>
+@endguest
 <!-- Start header -->
 <header class="top-navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -34,16 +45,47 @@
             </button>
             <div class="collapse navbar-collapse" id="navbars-rs-food">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" href="/">Anasayfa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="services.html">Our Services</a></li>
-
-                    <li class="nav-item"><a class="nav-link" href="hakkimizda.hmtl"> Hakkımızda</a></li>
-
-                    <li class="nav-item"><a class="nav-link" href="barbers.html">Our Barbers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="appointment.html">Appointment</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="{{route('homepage')}}">Anasayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('aboutus')}}"> Hakkımızda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('barbers')}}">Berberlerimiz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('booking')}}">Rezervasyon</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">İletişim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('fag')}}">SSS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('references')}}">Referanslarımız</a></li>
                 </ul>
             </div>
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
+
+            @auth
+
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"></a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                                   aria-expanded="false">
+                                    <img src="{{ asset('assets')}}/admin/production/images/img.jpg" alt="">{{Auth::user()->name }}
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="#"> Profile</a></li>
+                                    <li><a href="{{route('logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </nav>
+                </div>
+            @endauth
+
+            @guest
+                <a href="/login" class="text-uppercase">Giriş Yap</a> / <a href="/register" class="text-uppercase">Üye
+                    Ol</a>
+            @endguest
         </div>
     </nav>
 </header>
