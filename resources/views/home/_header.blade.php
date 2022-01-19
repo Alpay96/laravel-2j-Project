@@ -54,11 +54,8 @@
                     <li class="nav-item"><a class="nav-link" href="{{route('references')}}">Referanslarımız</a></li>
                 </ul>
             </div>
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-
-
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             @auth
-
                 <div class="nav_menu">
                     <nav>
                         <div class="nav toggle">
@@ -68,23 +65,23 @@
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                                    aria-expanded="false">
-                                    <img src="{{ asset('assets')}}/admin/production/images/img.jpg" alt="">{{Auth::user()->name }}
+                                    {{Auth::user()->name }}
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                    <li><a href="#"> Profile</a></li>
-                                    <li><a href="{{route('logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                    <li><a href="{{route('myprofile')}}"> Profile</a></li>
+                                    <li><a href="{{route('logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
-
                     </nav>
                 </div>
             @endauth
 
             @guest
-                <a href="/login" class="text-uppercase">Giriş Yap</a> / <a href="/register" class="text-uppercase">Üye
-                    Ol</a>
+                <a href="/login" class="text-uppercase">Login</a> &emsp;/&emsp; <a href="/register"
+                                                                                   class="text-uppercase">Sing Up</a>
             @endguest
         </div>
     </nav>

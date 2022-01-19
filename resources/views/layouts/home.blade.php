@@ -39,6 +39,7 @@
 
 <body class="barber_version">
 @include('home._header')
+
 @include('home._slider')
 
 
