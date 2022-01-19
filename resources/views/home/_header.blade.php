@@ -18,12 +18,7 @@
     </div>
 </div><!-- end loader -->
 <!-- END LOADER -->
-@auth
-    <div class="top-add alert alert-light alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>{{Auth::user()->name}}</strong> Hoş geldiniz
-    </div>
-@endauth
+
 @guest
     <div class="top-add alert alert-light alert-dismissible">
         <button type="button" class="close" data-dismiss="alert">&times;</button>

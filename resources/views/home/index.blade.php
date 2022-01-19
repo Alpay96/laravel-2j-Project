@@ -2,6 +2,12 @@
     $setting = \App\Http\Controllers\HomeController::getsetting()
 @endphp
 @extends('layouts.home')
+@auth
+    <div class="top-add alert alert-light alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{Auth::user()->name}}</strong> Hoş geldiniz
+    </div>
+@endauth
 
 @section('title', $setting->title)
 @section('description'){{$setting->description}} @endsection
@@ -9,6 +15,8 @@
 @section('keywords', $setting->keywords )
 
 @section('content')
+
+    @include('home._slider')
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="section wb">
@@ -27,7 +35,7 @@
                                 neque. Ut id erat sit amet libero bibendum aliquam. Donec ac egestas libero, eu bibendum
                                 risus. Phasellus et congue justo. </p>
 
-                            <a href="#services" data-scroll class="btn btn-light btn-radius btn-brd grd1 effect-1">Learn
+                            <a href="{{route('aboutus')}}" data-scroll class="btn btn-light btn-radius btn-brd grd1 effect-1">Learn
                                 More</a>
                         </div><!-- end messagebox -->
                     </div><!-- end col -->
@@ -37,9 +45,7 @@
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
-
                 <hr class="hr1">
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="about-tab">
@@ -91,9 +97,7 @@
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
-
                 <hr class="hr1">
-
                 <div class="row text-center">
                     <div class="col-lg-12">
                         <div class="owl-services owl-carousel owl-theme">
@@ -112,7 +116,6 @@
                                         natoque.</p>
                                 </div>
                             </div><!-- end service -->
-
                             <div class="service-widget">
                                 <div class="post-media wow fadeIn">
                                     <a href="{{ asset('assets')}}/uploads/barber_02.jpg" data-rel="prettyPhoto[gal]"
@@ -126,7 +129,6 @@
                                         sed leo rutrum euismod. Nullam vestibulum fermentum erat. It nam auctor. </p>
                                 </div>
                             </div><!-- end service -->
-
                             <div class="service-widget">
                                 <div class="post-media wow fadeIn">
                                     <a href="{{ asset('assets')}}/uploads/barber_03.jpg" data-rel="prettyPhoto[gal]"
@@ -140,7 +142,6 @@
                                         massa sodales aliquam at eget quam. Integer ultricies et magna quis posuere.</p>
                                 </div>
                             </div><!-- end service -->
-
                             <div class="service-widget">
                                 <div class="post-media wow fadeIn">
                                     <a href="{{ asset('assets')}}/uploads/barber_04.jpg" data-rel="prettyPhoto[gal]"
@@ -154,7 +155,6 @@
                                         massa sodales aliquam at eget quam. Integer ultricies et magna quis posuere.</p>
                                 </div>
                             </div><!-- end service -->
-
                             <div class="service-widget">
                                 <div class="post-media wow fadeIn">
                                     <a href="{{ asset('assets')}}/uploads/barber_05.jpg" data-rel="prettyPhoto[gal]"
@@ -168,7 +168,6 @@
                                         massa sodales aliquam at eget quam. Integer ultricies et magna quis posuere.</p>
                                 </div>
                             </div><!-- end service -->
-
                             <div class="service-widget">
                                 <div class="post-media wow fadeIn">
                                     <a href="{{ asset('assets')}}/uploads/barber_06.jpg" data-rel="prettyPhoto[gal]"
@@ -182,13 +181,11 @@
                                         massa sodales aliquam at eget quam. Integer ultricies et magna quis posuere.</p>
                                 </div>
                             </div><!-- end service -->
-
                         </div>
                     </div>
                 </div><!-- end row -->
             </div><!-- end container -->
         </div><!-- end section -->
-
         <div id="pricing" class="section lb">
             <div class="container">
                 <div class="section-title row text-center">
@@ -198,7 +195,6 @@
                     </div>
                 </div><!-- end title -->
                 <div class="row flex-items-xs-middle flex-items-xs-center">
-
                     <!-- Table #1  -->
                     <div class="col-xs-12 col-lg-4">
                         <div class="card text-center">
@@ -227,7 +223,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Table #1  -->
                     <div class="col-xs-12 col-lg-4">
                         <div class="card text-center">
@@ -256,7 +251,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Table #1  -->
                     <div class="col-xs-12 col-lg-4">
                         <div class="card text-center">
@@ -288,7 +282,6 @@
                 </div>
             </div>
         </div>
-
         <div id="barbers" class="section lb">
             <div class="container">
                 <div class="section-title row text-center">
@@ -297,7 +290,6 @@
                         <h3>OUR BARBERS</h3>
                     </div>
                 </div><!-- end title -->
-
                 <div class="row dev-list text-center">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s"
                          data-wow-delay="0.2s">
@@ -401,5 +393,4 @@
                 </div><!-- end row -->
             </div><!-- end container -->
         </div><!-- end section -->
-
 @endsection

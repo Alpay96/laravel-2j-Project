@@ -1,5 +1,5 @@
 <div class="side-menu">
-    <h3 class="side-menu-title">User Panel</h3>
+    <h3 class="side-menu-title"></h3>
     <ul class="list-group">
         <li><a href="{{route('myprofile')}}">Profilim</a></li>
         <li><a href="#">Rezervasyonlarım</a></li>

@@ -1,6 +1,6 @@
 @extends('layouts.home')
 
-@section('title','About Us - ' .  $setting->title)
+@section('title','References - ' .  $setting->title)
 @section('description'){{$setting->description}} @endsection
 
 @section('keywords', $setting->keywords )
@@ -17,12 +17,12 @@
                                 <img src="{{ asset('assets')}}/uploads/mustache.png" alt=""/>
                             </div>
                             <div class="title--heading">
-                                <h1>About</h1>
+                                <h1>References</h1>
                             </div>
                             <div class="clearfix"></div>
                             <ol class="breadcrumb">
                                 <li><a href="{{route('homepage')}}">Home</a></li>
-                                <li class="active">About</li>
+                                <li class="active">References</li>
                             </ol>
                         </div>
                         <!-- .title end -->
@@ -34,10 +34,8 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-12">
-                        <div class="message-box">
-                            <h4>About</h4>
-                            içerik alanı
-                        </div><!-- end messagebox -->
+
+                            {!! $setting->references !!}
                     </div><!-- end col -->
                 </div><!-- end row -->
 
