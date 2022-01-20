@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Mesajj;
 use App\Models\Setting;
 use App\Models\Style;
@@ -22,20 +23,27 @@ class HomeController extends Controller
     public function index()
     {
         $setting = Setting::first();
-        $slider = Style::select('id','title', 'image', 'slug')->limit(4)->get();
+        $slider = Style::select('id', 'title', 'image', 'slug')->limit(4)->get();
+        $modish = Style::select('id', 'title', 'image', 'slug')->limit(6)->inRandomOrder()->get();
 
-        #print_r($slider);
+        #print_r($modish);
         #exit();
 
-        $data =['setting'=>$setting, 'slider'=>$slider];
+        $data = [
+            'setting' => $setting,
+            'slider' => $slider,
+            'modish' => $modish
+        ];
         return view('home.index', $data);
     }
 
     public function style($id, $slug)
     {
         $data = Style::find($id);
-        print_r($data);
-        exit();
+        $datalist = Image::where('style_id', $id)->get();
+        #print_r($data);
+        #exit();
+        return view('home.style_detail', ['data' => $data, 'datalist' => $datalist]);
     }
 
     public function aboutus()
@@ -73,6 +81,12 @@ class HomeController extends Controller
         $data->message = $request->input('message');
         $data->save();
         return redirect()->route('contact')->with('success', 'Mesajınız Kaydedildi. Teşekkürler.');
+    }
+
+    public function services()
+    {
+        $setting = Setting::first();
+        return view('home.services', ['setting' => $setting]);
     }
 
     public function booking()

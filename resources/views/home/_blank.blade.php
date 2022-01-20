@@ -1,9 +1,9 @@
 @extends('layouts.home')
 
-@section('title','About Us - ' .  $setting->title)
-@section('description'){{$setting->description}} @endsection
+@section('title', $data->title)
+@section('description'){{$data->description}} @endsection
 
-@section('keywords', $setting->keywords )
+@section('keywords', $data->keywords )
 
 @section('content')
     <!-- Page Content -->
@@ -34,10 +34,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-12">
-                        <div class="message-box">
-                            <h4>About</h4>
                             içerik alanı
-                        </div><!-- end messagebox -->
                     </div><!-- end col -->
                 </div><!-- end row -->
 

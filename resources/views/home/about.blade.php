@@ -35,7 +35,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-12">
                             <h4>About Us</h4>
-                            {!! $setting->aboutus !!}}
+                            {!! $setting->aboutus !!}
                     </div><!-- end col -->
                 </div><!-- end row -->
                 <hr class="hr1">

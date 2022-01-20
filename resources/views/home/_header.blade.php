@@ -43,13 +43,14 @@
                     <li class="nav-item active"><a class="nav-link" href="{{route('homepage')}}">Anasayfa</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('aboutus')}}"> Hakkımızda</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('barbers')}}">Berberlerimiz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('services')}}">Hizmetler</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('booking')}}">Rezervasyon</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">İletişim</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('fag')}}">SSS</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('references')}}">Referanslarımız</a></li>
                 </ul>
             </div>
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             @auth
                 <div class="nav_menu">
                     <nav>

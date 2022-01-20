@@ -36,7 +36,8 @@
                                 neque. Ut id erat sit amet libero bibendum aliquam. Donec ac egestas libero, eu bibendum
                                 risus. Phasellus et congue justo. </p>
 
-                            <a href="{{route('aboutus')}}" data-scroll class="btn btn-light btn-radius btn-brd grd1 effect-1">Learn
+                            <a href="{{route('aboutus')}}" data-scroll
+                               class="btn btn-light btn-radius btn-brd grd1 effect-1">Learn
                                 More</a>
                         </div><!-- end messagebox -->
                     </div><!-- end col -->
@@ -92,99 +93,39 @@
                                     {{$setting->address}} <br>
                                     <strong>Telefon: </strong> {{$setting->phone}} <br>
                                     <strong>Fax: </strong> {{$setting->fax}} <br>
-                                    <strong>E-Mail: </strong> {{$setting->email}} <br>
+                                    <strong>E-Mail: </strong> {{$setting->email}}
                                 </div>
                             </div><!-- tab content -->
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
+
                 <hr class="hr1">
+
+                <h1 align="center"><strong><font face="Fantasy">SON MODA STİLLER</font> </strong></h1> <br>
                 <div class="row text-center">
                     <div class="col-lg-12">
                         <div class="owl-services owl-carousel owl-theme">
-
-                            <div class="service-widget">
-                                <div class="post-media wow fadeIn">
-                                    <a href="{{ asset('assets')}}/uploads/barber_01.jpg" data-rel="prettyPhoto[gal]"
-                                       class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
-                                    <img src="{{ asset('assets')}}/uploads/barber_01.jpg" alt=""
-                                         class="img-responsive img-rounded">
-                                </div>
-                                <div class="dit-box">
-                                    <h3>Show us Your Graft Style</h3>
-                                    <p>Aliquam sagittis ligula et sem lacinia, ut facilisis enim sollicitudin. Proin
-                                        nisi est, convallis nec purus vitae, iaculis posuere sapien. Cum sociis
-                                        natoque.</p>
-                                </div>
-                            </div><!-- end service -->
-                            <div class="service-widget">
-                                <div class="post-media wow fadeIn">
-                                    <a href="{{ asset('assets')}}/uploads/barber_02.jpg" data-rel="prettyPhoto[gal]"
-                                       class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
-                                    <img src="{{ asset('assets')}}/uploads/barber_02.jpg" alt=""
-                                         class="img-responsive img-rounded">
-                                </div>
-                                <div class="dit-box">
-                                    <h3>Outstanding Barber Shop</h3>
-                                    <p>Duis at tellus at dui tincidunt scelerisque nec sed felis. Suspendisse id dolor
-                                        sed leo rutrum euismod. Nullam vestibulum fermentum erat. It nam auctor. </p>
-                                </div>
-                            </div><!-- end service -->
-                            <div class="service-widget">
-                                <div class="post-media wow fadeIn">
-                                    <a href="{{ asset('assets')}}/uploads/barber_03.jpg" data-rel="prettyPhoto[gal]"
-                                       class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
-                                    <img src="{{ asset('assets')}}/uploads/barber_03.jpg" alt=""
-                                         class="img-responsive img-rounded">
-                                </div>
-                                <div class="dit-box">
-                                    <h3>The Barber Materials</h3>
-                                    <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae
-                                        massa sodales aliquam at eget quam. Integer ultricies et magna quis posuere.</p>
-                                </div>
-                            </div><!-- end service -->
-                            <div class="service-widget">
-                                <div class="post-media wow fadeIn">
-                                    <a href="{{ asset('assets')}}/uploads/barber_04.jpg" data-rel="prettyPhoto[gal]"
-                                       class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
-                                    <img src="{{ asset('assets')}}/uploads/barber_04.jpg" alt=""
-                                         class="img-responsive img-rounded">
-                                </div>
-                                <div class="dit-box">
-                                    <h3>The Barber Materials</h3>
-                                    <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae
-                                        massa sodales aliquam at eget quam. Integer ultricies et magna quis posuere.</p>
-                                </div>
-                            </div><!-- end service -->
-                            <div class="service-widget">
-                                <div class="post-media wow fadeIn">
-                                    <a href="{{ asset('assets')}}/uploads/barber_05.jpg" data-rel="prettyPhoto[gal]"
-                                       class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
-                                    <img src="{{ asset('assets')}}/uploads/barber_05.jpg" alt=""
-                                         class="img-responsive img-rounded">
-                                </div>
-                                <div class="dit-box">
-                                    <h3>The Barber Materials</h3>
-                                    <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae
-                                        massa sodales aliquam at eget quam. Integer ultricies et magna quis posuere.</p>
-                                </div>
-                            </div><!-- end service -->
-                            <div class="service-widget">
-                                <div class="post-media wow fadeIn">
-                                    <a href="{{ asset('assets')}}/uploads/barber_06.jpg" data-rel="prettyPhoto[gal]"
-                                       class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
-                                    <img src="{{ asset('assets')}}/uploads/barber_06.jpg" alt=""
-                                         class="img-responsive img-rounded">
-                                </div>
-                                <div class="dit-box">
-                                    <h3>The Barber Materials</h3>
-                                    <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae
-                                        massa sodales aliquam at eget quam. Integer ultricies et magna quis posuere.</p>
-                                </div>
-                            </div><!-- end service -->
+                            @foreach($modish as $rs)
+                                <div class="service-widget">
+                                    <div class="post-media wow fadeIn">
+                                        <a href="{{Storage::url($rs->image)}}" data-rel="prettyPhoto[gal]"
+                                           class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                                        <img src="{{Storage::url($rs->image)}}" style="height: 350px;" alt=""
+                                             class="img-responsive img-rounded">
+                                    </div>
+                                    <div class="dit-box">
+                                        <h3>{{$rs->title}}</h3>
+                                        <br>
+                                        <a href="{{route('style',['id' => $rs->id, 'slug' => $rs->slug])}}"
+                                           class="btn btn-light btn-radius btn-brd grd1 effect-1 butn">Style Detail</a>
+                                    </div>
+                                </div><!-- end service -->
+                            @endforeach
                         </div>
                     </div>
                 </div><!-- end row -->
+
             </div><!-- end container -->
         </div><!-- end section -->
         <div id="pricing" class="section lb">
@@ -302,13 +243,15 @@
                                 <div class="social-up-hover">
                                     <div class="footer-social">
                                         @if($setting->facebook !=null) <a href="{{$setting->facebook}}" target="_blank"
-                                        class="btn grd1"><i class="fa fa-facebook"></i></a> @endif
+                                                                          class="btn grd1"><i
+                                                class="fa fa-facebook"></i></a> @endif
                                         @if($setting->instagram !=null)<a href="{{$setting->instagram}}" target="_blank"
-                                        class="btn grd1"><i class="fa fa-instagram"></i></a> @endif
+                                                                          class="btn grd1"><i
+                                                class="fa fa-instagram"></i></a> @endif
                                         @if($setting->twitter !=null) <a href="{{$setting->twitter}}" target="_blank"
-                                        class="btn grd1"><i class="fa fa-twitter"></i></a> @endif
+                                                                         class="btn grd1"><i class="fa fa-twitter"></i></a> @endif
                                         @if($setting->youtube !=null) <a href="{{$setting->youtube}}" target="_blank"
-                                        class="btn grd1"><i class="fa fa-youtube"></i></a> @endif
+                                                                         class="btn grd1"><i class="fa fa-youtube"></i></a> @endif
                                     </div>
                                 </div>
                             </div>
@@ -335,14 +278,15 @@
                                 <div class="social-up-hover">
                                     <div class="footer-social">
                                         @if($setting->facebook !=null) <a href="{{$setting->facebook}}" target="_blank"
-                                        class="btn grd1"><i
+                                                                          class="btn grd1"><i
                                                 class="fa fa-facebook"></i></a> @endif
                                         @if($setting->instagram !=null)<a href="{{$setting->instagram}}" target="_blank"
-                                        class="btn grd1"><i class="fa fa-instagram"></i></a> @endif
+                                                                          class="btn grd1"><i
+                                                class="fa fa-instagram"></i></a> @endif
                                         @if($setting->twitter !=null) <a href="{{$setting->twitter}}" target="_blank"
-                                        class="btn grd1"><i class="fa fa-twitter"></i></a> @endif
+                                                                         class="btn grd1"><i class="fa fa-twitter"></i></a> @endif
                                         @if($setting->youtube !=null) <a href="{{$setting->youtube}}" target="_blank"
-                                        class="btn grd1"><i class="fa fa-youtube"></i></a> @endif
+                                                                         class="btn grd1"><i class="fa fa-youtube"></i></a> @endif
                                     </div>
                                 </div>
                             </div>
@@ -369,13 +313,15 @@
                                 <div class="social-up-hover">
                                     <div class="footer-social">
                                         @if($setting->facebook !=null) <a href="{{$setting->facebook}}" target="_blank"
-                                        class="btn grd1"><i class="fa fa-facebook"></i></a> @endif
+                                                                          class="btn grd1"><i
+                                                class="fa fa-facebook"></i></a> @endif
                                         @if($setting->instagram !=null)<a href="{{$setting->instagram}}" target="_blank"
-                                        class="btn grd1"><i class="fa fa-instagram"></i></a> @endif
+                                                                          class="btn grd1"><i
+                                                class="fa fa-instagram"></i></a> @endif
                                         @if($setting->twitter !=null) <a href="{{$setting->twitter}}" target="_blank"
-                                        class="btn grd1"><i class="fa fa-twitter"></i></a> @endif
+                                                                         class="btn grd1"><i class="fa fa-twitter"></i></a> @endif
                                         @if($setting->youtube !=null) <a href="{{$setting->youtube}}" target="_blank"
-                                        class="btn grd1"><i class="fa fa-youtube"></i></a> @endif
+                                                                         class="btn grd1"><i class="fa fa-youtube"></i></a> @endif
                                     </div>
                                 </div>
                             </div>
