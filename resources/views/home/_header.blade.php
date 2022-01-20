@@ -29,7 +29,7 @@
 <header class="top-navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="{{route('homepage')}}">
                 <img src="{{ asset('assets')}}/images/logo.png" alt=""/>
             </a>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbars-rs-food"

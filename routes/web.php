@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\MesajjController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -26,13 +27,19 @@ Route::get('/', function () {
     return view('home.index');
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('homepage');
+Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
 Route::get('/references', [HomeController::class, 'references'])->name('references');
 Route::get('/fag', [HomeController::class, 'fag'])->name('fag');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
+Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
+
 Route::get('/booking', [HomeController::class, 'booking'])->name('booking');
 Route::get('/barbers', [HomeController::class, 'barbers'])->name('barbers');
+Route::get('/style/{id}/{slug}', [HomeController::class, 'style'])->name('style');
+
+
 
 
 //Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->where(['id' => '[0-9]+', 'name' => '[A-Za-z]+']);
@@ -51,6 +58,15 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::post('update/{id}', [\App\Http\Controllers\Admin\StyleController::class, 'update'])->name('admin_style_update');
         Route::get('delete/{id}', [\App\Http\Controllers\Admin\StyleController::class, 'destroy'])->name('admin_style_delete');
         Route::get('show', [\App\Http\Controllers\Admin\StyleController::class, 'show'])->name('admin_style_show');
+    });
+
+    Route::prefix('messages')->group(function () {
+        Route::get('/', [MesajjController::class, 'index'])->name('admin_message');
+        Route::get('edit/{id}', [MesajjController::class, 'edit'])->name('admin_message_edit');
+        Route::get('update/{id}', [MesajjController::class, 'update'])->name('admin_message_update');
+        Route::get('delete/{id}', [MesajjController::class, 'destroy'])->name('admin_message_delete');
+        Route::get('show', [MesajjController::class, 'show'])->name('admin_message_show');
+
     });
 
     #Style Image Gallery

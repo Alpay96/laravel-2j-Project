@@ -60,8 +60,10 @@
                             <div class="col-md-9 offset-md-2">
                                 <div class="contact_form">
                                     <div id="message"></div>
-                                    <form id="contactform" class="row" action="contact.php" name="contactform"
-                                          method="post">
+                                    @include('home.message')
+                                    <form id="contactform" class="row" action="{{route('sendmessage')}}"
+                                          name="contactform" method="post">
+                                        @csrf
                                         <fieldset class="row row-fluid">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <input type="text" name="first_name" id="first_name"
@@ -79,6 +81,10 @@
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <input type="text" name="phone" id="phone" class="form-control"
                                                        placeholder="Your Phone">
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <input type="text" name="subject" id="subject" class="form-control"
+                                                       placeholder="Subject">
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <textarea class="form-control" name="comments" id="comments" rows="6"
@@ -99,11 +105,5 @@
                 </div><!-- end section -->
             </div>
         </div>
-
-        <div class="map-box">
-            <div class="container-fluid">
-                <div id="map"></div>
-            </div><!-- end container -->
-        </div><!-- end section -->
     </div>
 @endsection

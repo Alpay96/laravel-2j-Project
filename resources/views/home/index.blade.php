@@ -17,6 +17,7 @@
 @section('content')
 
     @include('home._slider')
+    <br><br><br>
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="section wb">

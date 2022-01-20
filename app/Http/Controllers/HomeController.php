@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mesajj;
 use App\Models\Setting;
+use App\Models\Style;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use MongoDB\Driver\Session;
 use phpDocumentor\Reflection\DocBlock\Tags\Method;
 
 class HomeController extends Controller
@@ -19,7 +22,20 @@ class HomeController extends Controller
     public function index()
     {
         $setting = Setting::first();
-        return view('home.index', ['setting' => $setting]);
+        $slider = Style::select('id','title', 'image', 'slug')->limit(4)->get();
+
+        #print_r($slider);
+        #exit();
+
+        $data =['setting'=>$setting, 'slider'=>$slider];
+        return view('home.index', $data);
+    }
+
+    public function style($id, $slug)
+    {
+        $data = Style::find($id);
+        print_r($data);
+        exit();
     }
 
     public function aboutus()
@@ -44,6 +60,19 @@ class HomeController extends Controller
     {
         $setting = Setting::first();
         return view('home.contact', ['setting' => $setting]);
+    }
+
+    public function sendmessage(Request $request)
+    {
+        $data = new Mesajj();
+        $data->name = $request->input('name');
+        $data->surname = $request->input('surname');
+        $data->email = $request->input('email');
+        $data->phone = $request->input('phone');
+        $data->subject = $request->input('subject');
+        $data->message = $request->input('message');
+        $data->save();
+        return redirect()->route('contact')->with('success', 'Mesajınız Kaydedildi. Teşekkürler.');
     }
 
     public function booking()
