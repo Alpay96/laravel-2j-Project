@@ -52,7 +52,7 @@
 
                             <div class="col-md-9 offset-md-2">
                                 <small>LET'S MAKE AN CONTACT FOR YOUR LIFE</small>
-                                <h3>Contact</h3>
+                                <h3>Contact US</h3>
                             </div>
                         </div><!-- end title -->
 
@@ -61,17 +61,16 @@
                                 <div class="contact_form">
                                     <div id="message"></div>
                                     @include('home.message')
-                                    <form id="contactform" class="row" action="{{route('sendmessage')}}"
-                                          name="contactform" method="post">
+                                    <form class="row" action="{{route('sendmessage')}}" method="post">
                                         @csrf
                                         <fieldset class="row row-fluid">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="first_name" id="first_name"
+                                                <input type="text" name="name" id="name"
                                                        class="form-control"
                                                        placeholder="First Name">
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="last_name" id="last_name" class="form-control"
+                                                <input type="text" name="surname" id="surname" class="form-control"
                                                        placeholder="Last Name">
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -87,13 +86,13 @@
                                                        placeholder="Subject">
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <textarea class="form-control" name="comments" id="comments" rows="6"
+                                            <textarea class="form-control" name="message" id="message" rows="6"
                                                       placeholder="Give us more details.."></textarea>
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                                                <button type="submit" value="SEND" id="submit"
-                                                        class="btn btn-light btn-radius btn-brd grd1 btn-block subt">
-                                                    Submit
+                                                <button class="btn btn-light btn-radius btn-brd grd1 effect-1 form-control"
+                                                        type="submit" value="SEND" id="submit">
+                                                    Gönder
                                                 </button>
                                             </div>
                                         </fieldset>

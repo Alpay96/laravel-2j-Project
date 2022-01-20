@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Contact Messages List')
+@section('title', 'Reviews')
 
 @section('content')
     <!-- page content -->
@@ -8,7 +8,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3> Messages </h3>
+                    <h3> Reviews </h3>
                     <br>
                     @include('home.message')
                 </div>
@@ -19,7 +19,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2> Message List </h2>
+                            <h2> Review List </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
 
@@ -32,13 +32,13 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Surname</th>
-                                    <th>E-mail</th>
-                                    <th>Phone</th>
+                                    <th>User</th>
+                                    <th>Style</th>
                                     <th>Subject</th>
-                                    <th>Message</th>
-                                    <th>Admin Note</th>
+                                    <th>Review</th>
+                                    <th>Rate</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
                                     <th style="text-align: center" colspan="2">Actions</th>
                                 </tr>
                                 </thead>
@@ -46,22 +46,24 @@
                                 @foreach($datalist as $rs)
                                     <tr>
                                         <td>{{$rs->id}}</td>
-                                        <td>{{$rs->name}}</td>
-                                        <td>{{$rs->surname}}</td>
-                                        <td>{{$rs->email}}</td>
-                                        <td>{{$rs->phone}}</td>
-                                        <td>{{$rs->subject}}</td>
-                                        <td>{{$rs->message}}</td>
-                                        <td>{{$rs->note}}</td>
-                                        <td>{{$rs->status}}</td>
+                                        <td>{{$rs->user->name}}</td>
+                                        <td> <a href="{{route('style', ['id'=>$rs->style->id, 'slug'=> $rs->style->slug])}}"
+                                            target="_blank"> {{$rs->style->title}} </a>
 
-                                        <td><a href="{{route('admin_message_edit', ['id'=> $rs->id])}}"
+                                        </td>
+                                        <td>{{$rs->subject}}</td>
+                                        <td>{{$rs->review}}</td>
+                                        <td>{{$rs->rate}}</td>
+                                        <td>{{$rs->status}}</td>
+                                        <td>{{$rs->created_at}}</td>
+
+                                        <td><a href="{{route('admin_review_show', ['id'=> $rs->id])}}"
                                                onclick="return !window.open(this.href, '', 'top=50 left=100 width=900 height=600')">
                                                 Edit
                                             </a>
 
                                         </td>
-                                        <td><a href="{{route('admin_message_delete', ['id'=> $rs->id])}}"
+                                        <td><a href="{{route('admin_review_delete', ['id'=> $rs->id])}}"
                                                onclick="return confirm('Delete ! Are you sure?')">
                                                 <img src="{{asset('assets/admin/images')}}/delete.png" height="40">
                                             </a>

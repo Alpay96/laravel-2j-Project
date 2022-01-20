@@ -54,8 +54,7 @@
                     <th>Id</th>
                     <th>Title</th>
                     <th>Image</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th style="text-align: center" colspan="2">Actions</th>
                 </tr>
                 </thead>
                 <tbody>

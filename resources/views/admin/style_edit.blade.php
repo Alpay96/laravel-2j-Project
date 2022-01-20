@@ -12,6 +12,7 @@
             <div class="page-title">
                 <div class="title_left">
                     <h3>Edit Style</h3>
+                    @include('home.message')
                 </div>
             </div>
             <br>

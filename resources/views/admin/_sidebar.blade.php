@@ -37,6 +37,8 @@
 
                     <li><a href="{{route('admin_message')}}"><i class="fa fa-table"></i>Contact Messages</a> </li>
 
+                    <li><a href="{{route('admin_review')}}"><i class="fa fa-circle"></i>Reviews</a> </li>
+
 
                     <li><a><i class="fa fa-clone"></i> Layouts <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">

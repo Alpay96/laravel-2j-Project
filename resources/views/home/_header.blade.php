@@ -2,6 +2,10 @@
     $setting = \App\Http\Controllers\HomeController::getsetting()
 @endphp
 
+@section('footerjs')
+    @livewireScripts
+@endsection
+
 <!-- LOADER -->
 <div id="preloader">
     <div class="cube-wrapper">
@@ -50,7 +54,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{route('references')}}">Referanslarımız</a></li>
                 </ul>
             </div>
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             @auth
                 <div class="nav_menu">
                     <nav>

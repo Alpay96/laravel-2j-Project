@@ -37,8 +37,7 @@
                                     <th>Image</th>
                                     <th>Image Gallery</th>
                                     <th>Status</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th style="text-align: center" colspan="2">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>

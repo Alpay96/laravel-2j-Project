@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\Review;
 use App\Models\Image;
 use App\Models\Mesajj;
 use App\Models\Setting;
@@ -41,9 +42,10 @@ class HomeController extends Controller
     {
         $data = Style::find($id);
         $datalist = Image::where('style_id', $id)->get();
+        $reviews = \App\Models\Review::where('style_id',$id)->get();
         #print_r($data);
         #exit();
-        return view('home.style_detail', ['data' => $data, 'datalist' => $datalist]);
+        return view('home.style_detail', ['data' => $data, 'datalist' => $datalist, 'reviews' => $reviews]);
     }
 
     public function aboutus()
