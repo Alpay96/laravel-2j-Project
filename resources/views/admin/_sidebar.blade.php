@@ -39,13 +39,8 @@
 
                     <li><a href="{{route('admin_review')}}"><i class="fa fa-circle"></i>Reviews</a> </li>
 
+                    <li><a href="{{route('admin_faq')}}"><i class="fa fa-question"></i>FAQ</a> </li>
 
-                    <li><a><i class="fa fa-clone"></i> Layouts <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                            <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
 

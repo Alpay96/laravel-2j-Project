@@ -50,11 +50,11 @@
                     <li class="nav-item"><a class="nav-link" href="{{route('services')}}">Hizmetler</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('booking')}}">Rezervasyon</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">İletişim</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('fag')}}">SSS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('faq')}}">SSS</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('references')}}">Referanslarımız</a></li>
                 </ul>
             </div>
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             @auth
                 <div class="nav_menu">
                     <nav>
@@ -80,8 +80,8 @@
             @endauth
 
             @guest
-                <a href="/login" class="text-uppercase">Login</a> &emsp;/&emsp; <a href="/register"
-                                                                                   class="text-uppercase">Sing Up</a>
+                <a href="/login" class="text-uppercase">Login</a> &emsp;/&emsp;
+                <a href="/register" class="text-uppercase">SingUp</a>
             @endguest
         </div>
     </nav>

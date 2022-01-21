@@ -31,17 +31,15 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-12">
-                        <div class="message-box">
-                            <h4>User Panel</h4>
-                            <div class="row">
-                                <div id="side-menu" class="col-md-2">
-                                    @include('home.usermenu')
-                                </div>
-                                <div id="main" class="col-md-10">
-                                    @include('profile.show')
-                                </div>
+                        <h4>User Panel</h4>
+                        <div class="row">
+                            <div id="side-menu" class="col-md-2">
+                                @include('home.usermenu')
                             </div>
-                        </div><!-- end messagebox -->
+                            <div id="main" class="col-md-10">
+                                @include('profile.show')
+                            </div>
+                        </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
             </div><!-- end container -->

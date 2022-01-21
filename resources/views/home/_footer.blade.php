@@ -87,10 +87,11 @@
                 <p class="footer-links">
                     <a href="{{route('homepage')}}">Home</a>
                     <a href="{{route('aboutus')}}">About</a>
-                    <a href="{{route('fag')}}">Faq</a>
+                    <a href="{{route('faq')}}">Faq</a>
                     <a href="{{route('contact')}}">Contact</a>
                 </p>
-                <p class="footer-company-name">All Rights Reserved. &copy; 2022 {{$setting->company}} Design By : Alpay Ustalar</p>
+                <p class="footer-company-name">All Rights Reserved. &copy; 2022 {{$setting->company}} Design By : Alpay
+                    Ustalar</p>
             </div>
         </div>
     </div><!-- end container -->

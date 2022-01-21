@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Contact Messages List')
+@section('title', 'Frequently Asked Questions List')
 
 @section('content')
     <!-- page content -->
@@ -8,18 +8,20 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3> Messages </h3>
+                    <h3> Frequently Asked Questions </h3>
                     <br>
+                    <a href="{{route('admin_faq_add')}}" type="button" class="btn btn-primary">Add FAQ</a>
                     @include('home.message')
                 </div>
             </div>
 
+            <br><br><br><br><br><br>
             <div class="clearfix"></div>
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2> Message List </h2>
+                            <h2> Faq List </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
 
@@ -32,36 +34,24 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Surname</th>
-                                    <th>E-mail</th>
-                                    <th>Phone</th>
-                                    <th>Subject</th>
-                                    <th>Message</th>
-                                    <th>Admin Note</th>
-                                    <th style="text-align: center" colspan="3">Actions</th>
+                                    <th>Position</th>
+                                    <th>Question</th>
+                                    <th>Answer</th>
+                                    <th>Status</th>
+                                    <th style="text-align: center" colspan="2">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($datalist as $rs)
                                     <tr>
                                         <td>{{$rs->id}}</td>
-                                        <td>{{$rs->name}}</td>
-                                        <td>{{$rs->surname}}</td>
-                                        <td>{{$rs->email}}</td>
-                                        <td>{{$rs->phone}}</td>
-                                        <td>{{$rs->subject}}</td>
-                                        <td>{{$rs->message}}</td>
-                                        <td>{{$rs->note}}</td>
+                                        <td>{{$rs->position}}</td>
+                                        <td>{{$rs->question}}</td>
+                                        <td>{!! $rs->answer !!}</td>
                                         <td>{{$rs->status}}</td>
 
-                                        <td><a href="{{route('admin_message_edit', ['id'=> $rs->id])}}"
-                                               onclick="return !window.open(this.href, '', 'top=50 left=100 width=900 height=600')">
-                                                Edit
-                                            </a>
-
-                                        </td>
-                                        <td><a href="{{route('admin_message_delete', ['id'=> $rs->id])}}"
+                                        <td><a href="{{route('admin_faq_edit', ['id'=> $rs->id])}}"> Edit </a></td>
+                                        <td><a href="{{route('admin_faq_delete', ['id'=> $rs->id])}}"
                                                onclick="return confirm('Delete ! Are you sure?')">
                                                 <img src="{{asset('assets/admin/images')}}/delete.png" height="40">
                                             </a>

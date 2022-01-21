@@ -1,0 +1,59 @@
+@extends('layouts.admin')
+
+@section('title', 'Add Frequently Asked Questions')
+@section('javascript')
+    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+@endsection
+
+@section('content')
+    <!-- page content -->
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>Add Frequently Asked Questions</h3>
+                </div>
+            </div>
+            <br>
+            <div class="">
+                <br>
+                <form role="form" action="{{route('admin_faq_store')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="">
+                        <br>
+                        <div class="form-group">
+                            <label>Position</label>
+                            <input type="number" id="position" name="position" value="0" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Question</label>
+                            <input type="text" name="question" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Answer</label>
+                            <textarea id="answer" name="answer"></textarea>
+                            <script>
+                                CKEDITOR.replace('answer');
+                            </script>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select class="form-control select2" name="status" style="width: 100%;">
+                                <option selected="selected">False</option>
+                                <option>True</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="">
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- /page content -->
+@endsection

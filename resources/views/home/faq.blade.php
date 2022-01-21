@@ -5,6 +5,18 @@
 
 @section('keywords', $setting->keywords )
 
+@section('headerjs')
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+    <script>
+        $(function () {
+            $("#accordion").accordion();
+        });
+    </script>
+@endsection
+
 @section('content')
     <!-- Page Content -->
     <div id="page-content-wrapper">
@@ -34,9 +46,15 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-12">
-
-                            SSS
-
+                        <div id="accordion">
+                            @foreach($datalist as $rs)
+                                <h3><strong>{{$rs->question}}</strong></h3>
+                                <div>
+                                    <p>  {!! $rs->answer !!}</p>
+                                </div>
+                                <hr>
+                            @endforeach
+                        </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
 

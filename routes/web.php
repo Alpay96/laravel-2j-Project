@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MesajjController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\HomeController;
@@ -31,7 +32,9 @@ Route::get('/', function () {
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
 Route::get('/references', [HomeController::class, 'references'])->name('references');
-Route::get('/fag', [HomeController::class, 'fag'])->name('fag');
+
+Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
@@ -49,6 +52,7 @@ Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->whereNumber('i
 //Admin
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home');
+
     #Style
     Route::prefix('style')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\StyleController::class, 'index'])->name('admin_style');
@@ -64,7 +68,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::prefix('messages')->group(function () {
         Route::get('/', [MesajjController::class, 'index'])->name('admin_message');
         Route::get('edit/{id}', [MesajjController::class, 'edit'])->name('admin_message_edit');
-        Route::get('update/{id}', [MesajjController::class, 'update'])->name('admin_message_update');
+        Route::post('update/{id}', [MesajjController::class, 'update'])->name('admin_message_update');
         Route::get('delete/{id}', [MesajjController::class, 'destroy'])->name('admin_message_delete');
         Route::get('show', [MesajjController::class, 'show'])->name('admin_message_show');
 
@@ -79,6 +83,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     });
 
 
+    #Review
     Route::prefix('review')->group(function () {
         Route::get('/', [ReviewController::class, 'index'])->name('admin_review');
         Route::post('update/{id}', [ReviewController::class, 'update'])->name('admin_review_update');
@@ -86,9 +91,24 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('show/{id}', [ReviewController::class, 'show'])->name('admin_review_show');
     });
 
+
     #Setting
     Route::get('setting', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin_setting');
     Route::post('setting/update', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
+
+
+    #Faq
+    Route::prefix('faq')->group(function () {
+        Route::get('/', [FaqController::class, 'index'])->name('admin_faq');
+        Route::get('create', [FaqController::class, 'create'])->name('admin_faq_add');
+        Route::post('store', [FaqController::class, 'store'])->name('admin_faq_store');
+        Route::get('edit/{id}', [FaqController::class, 'edit'])->name('admin_faq_edit');
+        Route::post('update/{id}', [FaqController::class, 'update'])->name('admin_faq_update');
+        Route::get('delete/{id}', [FaqController::class, 'destroy'])->name('admin_faq_delete');
+        Route::get('show', [FaqController::class, 'show'])->name('admin_faq_show');
+    });
+
+
 });
 
 
