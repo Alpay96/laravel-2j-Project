@@ -15,6 +15,7 @@ class CreateMesajjsTable extends Migration
     {
         Schema::create('mesajjs', function (Blueprint $table) {
             $table->id()->autoIncrement();
+            #$table->integer('user_id'); //bu satır eklenecek.
             $table->string('name', 100);
             $table->string('surname', 100);
             $table->string('email', 50)->nullable();

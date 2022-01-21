@@ -6,6 +6,7 @@ use App\Http\Livewire\Review;
 use App\Models\Faq;
 use App\Models\Image;
 use App\Models\Mesajj;
+use App\Models\Reservation;
 use App\Models\Setting;
 use App\Models\Style;
 use Illuminate\Http\Request;
@@ -83,8 +84,22 @@ class HomeController extends Controller
         $data->phone = $request->input('phone');
         $data->subject = $request->input('subject');
         $data->message = $request->input('message');
+        $data->user_id = Auth::id();
         $data->save();
         return redirect()->route('contact')->with('success', 'Mesajınız Kaydedildi. Teşekkürler.');
+    }
+
+    public function sendbooking(Request $request)
+    {
+        $data = new Reservation();
+        $data->user_id = Auth::id();
+        $data->name = $request->input('name');
+        $data->email = $request->input('email');
+        $data->phone = $request->input('phone');
+        $data->note = $request->input('note');
+        $data->date = $request->input('date');
+        $data->save();
+        return redirect()->route('booking')->with('success', 'Rezervasyon Talebiniz Alındı. Teşekkürler.');
     }
 
     public function services()

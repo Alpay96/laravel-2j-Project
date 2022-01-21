@@ -90,8 +90,9 @@
                                                       placeholder="Give us more details.."></textarea>
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                                                <button class="btn btn-light btn-radius btn-brd grd1 effect-1 form-control"
-                                                        type="submit" value="SEND" id="submit">
+                                                <button
+                                                    class="btn btn-light btn-radius btn-brd grd1 effect-1 form-control"
+                                                    type="submit" value="SEND" id="submit">
                                                     Gönder
                                                 </button>
                                             </div>

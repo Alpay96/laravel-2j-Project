@@ -29,7 +29,7 @@
                                 <img src="{{ asset('assets')}}/uploads/mustache.png" alt=""/>
                             </div>
                             <div class="title--heading">
-                                <h1>SSS</h1>
+                                <h1>FAQ</h1>
                             </div>
                             <div class="clearfix"></div>
                             <ol class="breadcrumb">

@@ -5,7 +5,7 @@
             <div class="text-center item slider display-table overlay">
                 <div class="display-table-cell">
                     <img src="{{Storage::url($rs->image)}}"
-                         style="height:750px; width:100%; object-fit:cover; background-size: cover" alt="">
+                         style="height:750px; width:auto; object-fit:cover; background-size: cover" alt="">
                     <div class="big-tagline text-center">
                         <h2><strong>{{$rs->title}}</strong></h2>
                         <a href="{{route('style',['id' => $rs->id, 'slug' => $rs->slug])}}"

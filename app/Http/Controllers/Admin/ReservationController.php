@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Review;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class ReviewController extends Controller
+class ReservationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,14 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $datalist = Review::all();
-        return view('admin.review', ['datalist' => $datalist]);
+        $datalist = Reservation::all();
+        return view('admin.reservations', ['datalist' => $datalist]);
+    }
+
+    public function list($status)
+    {
+        $datalist = Reservation::where('status', $status)->get();
+        return view('admin.reservations', ['datalist' => $datalist]);
     }
 
     /**
@@ -24,6 +31,7 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         //
@@ -35,6 +43,7 @@ class ReviewController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         //
@@ -43,37 +52,44 @@ class ReviewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Review $review
+     * @param \App\Models\Reservation $reservation
      * @return \Illuminate\Http\Response
      */
-    public function show(Review $review, $id)
+
+    public function show(Reservation $reservation, $id)
     {
-        $data = Review::find($id);
-        return view('admin.review_edit', ['data' => $data]);
+        $data = Reservation::find($id);
+        return view('admin.reservation_edit', ['data' => $data]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Review $review
+     * @param \App\Models\Reservation $reservation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Review $review)
+
+    public function edit(Reservation $reservation, $id)
     {
-        //
+        $data = Reservation::find($id);
+        $data->status = 'Read';
+        $data->save();
+        return view('admin.reservation_edit', ['data' => $data]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Review $review
+     * @param \App\Models\Reservation $reservation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Review $review, $id)
+
+    public function update(Request $request, Reservation $reservation, $id)
     {
-        $data = Review::find($id);
+        $data = Reservation::find($id);
         $data->status = $request->input('status');
+        $data->admin_note = $request->input('admin_note');
         $data->save();
         return back()->with('success', 'Review Updated');
     }
@@ -81,12 +97,13 @@ class ReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Review $review
+     * @param \App\Models\Reservation $reservation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $review, $id)
+
+    public function destroy(Reservation $reservation, $id)
     {
-        $data = Review::find($id);
+        $data = Reservation::find($id);
         $data->delete();
         return redirect()->back()->with('success', 'Review Deleted');
     }

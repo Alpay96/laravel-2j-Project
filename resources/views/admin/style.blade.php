@@ -60,7 +60,7 @@
                                         <td><a href="{{route('admin_style_edit', ['id'=> $rs->id])}}"> Edit </a></td>
                                         <td><a href="{{route('admin_style_delete', ['id'=> $rs->id])}}"
                                                onclick="return confirm('Delete ! Are you sure?')">
-                                                <img src="{{asset('assets/admin/images')}}/delete.png" height="40">
+                                                <i class="fa fa-trash"></i>
                                             </a></td>
                                     </tr>
                                 @endforeach

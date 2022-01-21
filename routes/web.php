@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MesajjController;
+use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\StyleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +40,7 @@ Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
+Route::post('/sendbooking', [HomeController::class, 'sendbooking'])->name('sendbooking');
 
 Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/booking', [HomeController::class, 'booking'])->name('booking');
@@ -55,14 +58,15 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     #Style
     Route::prefix('style')->group(function () {
-        Route::get('/', [\App\Http\Controllers\Admin\StyleController::class, 'index'])->name('admin_style');
-        Route::get('create', [\App\Http\Controllers\Admin\StyleController::class, 'create'])->name('admin_style_add');
-        Route::post('store', [\App\Http\Controllers\Admin\StyleController::class, 'store'])->name('admin_style_store');
-        Route::get('edit/{id}', [\App\Http\Controllers\Admin\StyleController::class, 'edit'])->name('admin_style_edit');
-        Route::post('update/{id}', [\App\Http\Controllers\Admin\StyleController::class, 'update'])->name('admin_style_update');
-        Route::get('delete/{id}', [\App\Http\Controllers\Admin\StyleController::class, 'destroy'])->name('admin_style_delete');
-        Route::get('show', [\App\Http\Controllers\Admin\StyleController::class, 'show'])->name('admin_style_show');
+        Route::get('/', [StyleController::class, 'index'])->name('admin_style');
+        Route::get('create', [StyleController::class, 'create'])->name('admin_style_add');
+        Route::post('store', [StyleController::class, 'store'])->name('admin_style_store');
+        Route::get('edit/{id}', [StyleController::class, 'edit'])->name('admin_style_edit');
+        Route::post('update/{id}', [StyleController::class, 'update'])->name('admin_style_update');
+        Route::get('delete/{id}', [StyleController::class, 'destroy'])->name('admin_style_delete');
+        Route::get('show', [StyleController::class, 'show'])->name('admin_style_show');
     });
+
 
     #Message
     Route::prefix('messages')->group(function () {
@@ -73,6 +77,20 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('show', [MesajjController::class, 'show'])->name('admin_message_show');
 
     });
+
+
+    #Reservation
+    Route::prefix('reservations')->group(function () {
+        Route::get('/', [ReservationController::class, 'index'])->name('admin_reservations');
+        Route::get('list/{status}', [ReservationController::class, 'list'])->name('admin_reservation_list');
+        Route::get('create', [ReservationController::class, 'create'])->name('admin_reservation_add');
+        Route::post('store', [ReservationController::class, 'store'])->name('admin_reservation_store');
+        Route::get('edit/{id}', [ReservationController::class, 'edit'])->name('admin_reservation_edit');
+        Route::post('update/{id}', [ReservationController::class, 'update'])->name('admin_reservation_update');
+        Route::get('delete/{id}', [ReservationController::class, 'destroy'])->name('admin_reservation_delete');
+        Route::get('show/{id}', [ReservationController::class, 'show'])->name('admin_reservation_show');
+    });
+
 
     #Style Image Gallery
     Route::prefix('image')->group(function () {
@@ -115,12 +133,18 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
 
     Route::get('/', [UserController::class, 'index'])->name('myprofile');
+
+    #myreviews
     Route::get('/myreviews', [UserController::class, 'myreviews'])->name('myreviews');
     Route::get('/destroymyreview/{id}', [ReviewController::class, 'destroy'])->name('user_review_delete');
 
+    #mymessages
+    Route::get('/mymessages', [UserController::class, 'mymessages'])->name('mymessages');
+    Route::get('/myreservations', [UserController::class, 'myreservations'])->name('myreservations');
+
 });
 
-
+#User
 Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
 
     Route::get('/profile', [UserController::class, 'index'])->name('userprofile');

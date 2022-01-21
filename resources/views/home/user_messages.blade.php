@@ -1,6 +1,6 @@
 @extends('layouts.home')
 
-@section('title', 'User Profile - Yorumlarım')
+@section('title', 'User Profile - Mesajlarım')
 
 @section('content')
 
@@ -14,12 +14,12 @@
                                 <img src="{{ asset('assets')}}/uploads/mustache.png" alt=""/>
                             </div>
                             <div class="title--heading">
-                                <h1>Yorumlarım</h1>
+                                <h1>Mesajlarım</h1>
                             </div>
                             <div class="clearfix"></div>
                             <ol class="breadcrumb">
                                 <li><a href="{{route('homepage')}}">Home</a></li>
-                                <li class="active">Yorumlarım</li>
+                                <li class="active">Mesajlarım</li>
                             </ol>
                         </div>
                         <!-- .title end -->
@@ -42,36 +42,27 @@
                                         <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Style</th>
+                                            <th>Name</th>
+                                            <th>Surname</th>
+                                            <th>E-mail</th>
+                                            <th>Phone</th>
                                             <th>Subject</th>
-                                            <th>Review</th>
-                                            <th>Rate</th>
-                                            <th>Status</th>
+                                            <th>Message</th>
                                             <th>Date</th>
-                                            <th>Delete</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @include('home.message')
+
                                         @foreach($datalist as $rs)
                                             <tr>
                                                 <td>{{$rs->id}}</td>
-                                                <td>
-                                                    <a href="{{route('style',['id'=>$rs->style->id, 'slug'=>$rs->style->slug])}}"
-                                                       target="_blank">{{$rs->style->title}}</a>
-                                                </td>
+                                                <td>{{$rs->name}}</td>
+                                                <td>{{$rs->surname}}</td>
+                                                <td>{{$rs->email}}</td>
+                                                <td>{{$rs->phone}}</td>
                                                 <td>{{$rs->subject}}</td>
-                                                <td>{{$rs->review}}</td>
-                                                <td>{{$rs->rate}}</td>
-                                                <td>{{$rs->status}}</td>
+                                                <td>{{$rs->message}}</td>
                                                 <td>{{$rs->created_at}}</td>
-
-                                                <td><a href="{{route('admin_review_delete', ['id'=> $rs->id])}}"
-                                                       onclick="return confirm('Delete ! Are you sure?')">
-                                                        <i class="fa fa-trash"></i>
-
-                                                    </a>
-                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>

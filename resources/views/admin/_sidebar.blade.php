@@ -32,39 +32,30 @@
             <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
+                    <li><a href="{{ route('admin_style') }}"> <i class="fa fa-star"></i> Styles </a></li>
+                    <ul class="nav side-menu">
+                        <li><a><i class="fa fa-clock-o"></i> Reservations <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href="{{route('admin_reservations')}}">Reservations</a></li>
+                                <li><a href="{{route('admin_reservation_list', ['status'=>'new'])}}">New Reservations</a></li>
+                                <li><a href="{{route('admin_reservation_list', ['status'=>'accepted'])}}">Accepted Reservation</a></li>
+                                <li><a href="{{route('admin_reservation_list', ['status'=>'rejected'])}}">Rejected Reservation</a></li>
+                                <li><a href="{{route('admin_reservation_list', ['status'=>'cancelled'])}}">Cancelled Reservation</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <li><a href="{{route('admin_message')}}"><i class="fa fa-table"></i>Contact Messages</a></li>
+                    <li><a href="{{route('admin_review')}}"><i class="fa fa-pencil"></i>Reviews</a></li>
+                    <li><a href="{{route('admin_faq')}}"><i class="fa fa-question"></i>FAQ</a></li>
 
-                    <li> <a href="{{ route('admin_style') }}"> <i class="fa fa-edit"></i> Styles </a> </li>
-
-                    <li><a href="{{route('admin_message')}}"><i class="fa fa-table"></i>Contact Messages</a> </li>
-
-                    <li><a href="{{route('admin_review')}}"><i class="fa fa-circle"></i>Reviews</a> </li>
-
-                    <li><a href="{{route('admin_faq')}}"><i class="fa fa-question"></i>FAQ</a> </li>
-
-                </ul>
-            </div>
-
-            <div class="menu_section">
-                <h3>Live On</h3>
-                <ul class="nav side-menu">
-                    <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="e_commerce.html">E-commerce</a></li>
-                            <li><a href="projects.html">Projects</a></li>
-                            <li><a href="project_detail.html">Project Detail</a></li>
-                            <li><a href="contacts.html">Contacts</a></li>
-                            <li><a href="profile.html">Profile</a></li>
-                        </ul>
+                    <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page
+                            <span class="label label-success pull-right">Coming Soon</span>
+                        </a>
                     </li>
-
-                    <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span
-                                class="label label-success pull-right">Coming Soon</span></a></li>
                 </ul>
             </div>
-
         </div>
         <!-- /sidebar menu -->
-
         <!-- /menu footer buttons -->
         <div class="sidebar-footer hidden-small">
             <a href="{{route('admin_setting')}}" data-toggle="tooltip" data-placement="top" title="Settings">
@@ -76,7 +67,7 @@
             <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{'logout'}}">
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{route('logout')}}">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
             </a>
         </div>

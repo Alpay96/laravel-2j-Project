@@ -1,9 +1,9 @@
 @extends('layouts.home')
 
-@section('title', 'User Profile - Yorumlarım')
+@section('title', 'Reservations')
 
 @section('content')
-
+    <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="all-page-bar">
             <div class="container">
@@ -14,12 +14,12 @@
                                 <img src="{{ asset('assets')}}/uploads/mustache.png" alt=""/>
                             </div>
                             <div class="title--heading">
-                                <h1>Yorumlarım</h1>
+                                <h1>Reservations</h1>
                             </div>
                             <div class="clearfix"></div>
                             <ol class="breadcrumb">
                                 <li><a href="{{route('homepage')}}">Home</a></li>
-                                <li class="active">Yorumlarım</li>
+                                <li class="active">Reservations</li>
                             </ol>
                         </div>
                         <!-- .title end -->
@@ -42,36 +42,27 @@
                                         <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Style</th>
-                                            <th>Subject</th>
-                                            <th>Review</th>
-                                            <th>Rate</th>
+                                            <th>Name</th>
+                                            <th>E-mail</th>
+                                            <th>Phone</th>
+                                            <th>Note</th>
+                                            <th>Booking Date</th>
                                             <th>Status</th>
-                                            <th>Date</th>
-                                            <th>Delete</th>
+                                            <th>Admin Note</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @include('home.message')
+
                                         @foreach($datalist as $rs)
                                             <tr>
                                                 <td>{{$rs->id}}</td>
-                                                <td>
-                                                    <a href="{{route('style',['id'=>$rs->style->id, 'slug'=>$rs->style->slug])}}"
-                                                       target="_blank">{{$rs->style->title}}</a>
-                                                </td>
-                                                <td>{{$rs->subject}}</td>
-                                                <td>{{$rs->review}}</td>
-                                                <td>{{$rs->rate}}</td>
+                                                <td>{{$rs->name}}</td>
+                                                <td>{{$rs->email}}</td>
+                                                <td>{{$rs->phone}}</td>
+                                                <td>{{$rs->note}}</td>
+                                                <td>{{$rs->date}}</td>
                                                 <td>{{$rs->status}}</td>
-                                                <td>{{$rs->created_at}}</td>
-
-                                                <td><a href="{{route('admin_review_delete', ['id'=> $rs->id])}}"
-                                                       onclick="return confirm('Delete ! Are you sure?')">
-                                                        <i class="fa fa-trash"></i>
-
-                                                    </a>
-                                                </td>
+                                                <td>{{$rs->admin_note}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -81,6 +72,7 @@
                         </div><!-- end messagebox -->
                     </div><!-- end col -->
                 </div><!-- end row -->
+
             </div><!-- end container -->
         </div><!-- end section -->
     </div>

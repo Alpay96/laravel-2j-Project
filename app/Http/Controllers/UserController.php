@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Admin\MesajjController;
 use App\Http\Livewire\Review;
+use App\Models\Mesajj;
+use App\Models\Reservation;
 use App\Models\User;
+use http\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,6 +27,18 @@ class UserController extends Controller
     {
         $datalist = \App\Models\Review::where('user_id', '=', Auth::user()->id)->get();
         return view('home.user_reviews', ['datalist'=>$datalist]);
+    }
+
+    public function mymessages()
+    {
+        $datalist = Mesajj::where('user_id', '=', Auth::user()->id)->get();
+        return view('home.user_messages', ['datalist'=>$datalist]);
+    }
+
+    public function myreservations()
+    {
+        $datalist = Reservation::where('user_id', '=', Auth::user()->id)->get();
+        return view('home.user_reservations', ['datalist'=>$datalist]);
     }
 
     public function destroymyreviews(\App\Models\Review $review, $id)

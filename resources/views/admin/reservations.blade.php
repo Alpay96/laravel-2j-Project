@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Reviews')
+@section('title', 'Reservation List')
 
 @section('content')
     <!-- page content -->
@@ -8,7 +8,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3> Reviews </h3>
+                    <h3> Reservations </h3>
                     <br>
                     @include('home.message')
                 </div>
@@ -19,7 +19,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2> Review List </h2>
+                            <h2> Reservations List </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
 
@@ -33,13 +33,14 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>User</th>
-                                    <th>Style</th>
-                                    <th>Subject</th>
-                                    <th>Review</th>
-                                    <th>Rate</th>
-                                    <th>Status</th>
-                                    <th>Date</th>
-                                    <th style="text-align: center" colspan="2">Actions</th>
+                                    <th>Name</th>
+                                    <th>E-mail</th>
+                                    <th>Phone</th>
+                                    <th>Note</th>
+                                    <th>Created Date</th>
+                                    <th>Booking Date</th>
+                                    <th>Admin Note</th>
+                                    <th style="text-align: center" colspan="3">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -47,33 +48,24 @@
                                     <tr>
                                         <td>{{$rs->id}}</td>
                                         <td>{{$rs->user->name}}</td>
-                                        <td>
-                                            <a href="{{route('style', ['id'=>$rs->style->id, 'slug'=> $rs->style->slug])}}"
-                                               target="_blank"> {{$rs->style->title}} </a>
-
-                                        </td>
-                                        <td>{{$rs->subject}}</td>
-                                        <td>{{$rs->review}}</td>
-                                        <td>{{$rs->rate}}</td>
-                                        <td>{{$rs->status}}</td>
+                                        <td>{{$rs->name}}</td>
+                                        <td>{{$rs->email}}</td>
+                                        <td>{{$rs->phone}}</td>
+                                        <td>{{$rs->note}}</td>
                                         <td>{{$rs->created_at}}</td>
+                                        <td>{{$rs->date}}</td>
+                                        <td>{{$rs->admin_note}}</td>
+                                        <td>{{$rs->status}}</td>
 
                                         <td>
-                                            <a href="{{route('admin_review_show', ['id'=> $rs->id])}}"
-                                               onclick="return !window.open(this.href, '', 'top=50 left=100 width=900 height=600')">
-                                                Edit
+                                            <a href="{{route('admin_reservation_show', ['id'=> $rs->id])}}"
+                                               onclick="return !window.open(this.href, '', 'top=50 left=100 width=1100 height=850')">
+                                                <i class="fa fa-edit"></i>
                                             </a>
+                                        </td>
 
-                                        </td>
-                                        <td>
-                                            <a href="{{route('admin_review_delete', ['id'=> $rs->id])}}"
-                                               onclick="return confirm('Delete ! Are you sure?')">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                        </td>
                                     </tr>
                                 @endforeach
-
                                 </tbody>
                             </table>
                         </div>

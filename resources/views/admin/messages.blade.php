@@ -63,7 +63,7 @@
                                         </td>
                                         <td><a href="{{route('admin_message_delete', ['id'=> $rs->id])}}"
                                                onclick="return confirm('Delete ! Are you sure?')">
-                                                <img src="{{asset('assets/admin/images')}}/delete.png" height="40">
+                                                <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
                                     </tr>

@@ -13,10 +13,11 @@ class MesajjController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $datalist = Mesajj::all();
-        return view('admin.messages', ['datalist'=>$datalist]);
+        return view('admin.messages', ['datalist' => $datalist]);
     }
 
     /**
@@ -24,6 +25,7 @@ class MesajjController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         //
@@ -32,9 +34,10 @@ class MesajjController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         //
@@ -43,9 +46,10 @@ class MesajjController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Mesajj  $mesajj
+     * @param \App\Models\Mesajj $mesajj
      * @return \Illuminate\Http\Response
      */
+
     public function show(Mesajj $mesajj)
     {
         //
@@ -54,10 +58,11 @@ class MesajjController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Mesajj  $mesajj
+     * @param \App\Models\Mesajj $mesajj
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mesajj $mesajj,$id)
+
+    public function edit(Mesajj $mesajj, $id)
     {
         $data = Mesajj::find($id);
         $data->status = 'Read';
@@ -68,10 +73,11 @@ class MesajjController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Mesajj  $mesajj
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Mesajj $mesajj
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, Mesajj $mesajj, $id)
     {
         $data = Mesajj::find($id);
@@ -83,9 +89,10 @@ class MesajjController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Mesajj  $mesajj
+     * @param \App\Models\Mesajj $mesajj
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(Mesajj $mesajj, $id)
     {
         $data = Mesajj::find($id);
