@@ -46,6 +46,7 @@ Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/booking', [HomeController::class, 'booking'])->name('booking');
 Route::get('/barbers', [HomeController::class, 'barbers'])->name('barbers');
 Route::get('/style/{id}/{slug}', [HomeController::class, 'style'])->name('style');
+Route::post('/getstyle', [HomeController::class, 'getstyle'])->name('getstyle');
 
 
 //Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->where(['id' => '[0-9]+', 'name' => '[A-Za-z]+']);
@@ -54,80 +55,85 @@ Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->whereNumber('i
 
 //Admin
 Route::middleware('auth')->prefix('admin')->group(function () {
-    Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home');
 
-    #Style
-    Route::prefix('style')->group(function () {
-        Route::get('/', [StyleController::class, 'index'])->name('admin_style');
-        Route::get('create', [StyleController::class, 'create'])->name('admin_style_add');
-        Route::post('store', [StyleController::class, 'store'])->name('admin_style_store');
-        Route::get('edit/{id}', [StyleController::class, 'edit'])->name('admin_style_edit');
-        Route::post('update/{id}', [StyleController::class, 'update'])->name('admin_style_update');
-        Route::get('delete/{id}', [StyleController::class, 'destroy'])->name('admin_style_delete');
-        Route::get('show', [StyleController::class, 'show'])->name('admin_style_show');
-    });
+    //Admin Role
+    Route::middleware('admin')->group(function () {
 
+        Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home');
 
-    #Message
-    Route::prefix('messages')->group(function () {
-        Route::get('/', [MesajjController::class, 'index'])->name('admin_message');
-        Route::get('edit/{id}', [MesajjController::class, 'edit'])->name('admin_message_edit');
-        Route::post('update/{id}', [MesajjController::class, 'update'])->name('admin_message_update');
-        Route::get('delete/{id}', [MesajjController::class, 'destroy'])->name('admin_message_delete');
-        Route::get('show', [MesajjController::class, 'show'])->name('admin_message_show');
-
-    });
+        #Style
+        Route::prefix('style')->group(function () {
+            Route::get('/', [StyleController::class, 'index'])->name('admin_style');
+            Route::get('create', [StyleController::class, 'create'])->name('admin_style_add');
+            Route::post('store', [StyleController::class, 'store'])->name('admin_style_store');
+            Route::get('edit/{id}', [StyleController::class, 'edit'])->name('admin_style_edit');
+            Route::post('update/{id}', [StyleController::class, 'update'])->name('admin_style_update');
+            Route::get('delete/{id}', [StyleController::class, 'destroy'])->name('admin_style_delete');
+            Route::get('show', [StyleController::class, 'show'])->name('admin_style_show');
+        });
 
 
-    #Reservation
-    Route::prefix('reservations')->group(function () {
-        Route::get('/', [ReservationController::class, 'index'])->name('admin_reservations');
-        Route::get('list/{status}', [ReservationController::class, 'list'])->name('admin_reservation_list');
-        Route::get('create', [ReservationController::class, 'create'])->name('admin_reservation_add');
-        Route::post('store', [ReservationController::class, 'store'])->name('admin_reservation_store');
-        Route::get('edit/{id}', [ReservationController::class, 'edit'])->name('admin_reservation_edit');
-        Route::post('update/{id}', [ReservationController::class, 'update'])->name('admin_reservation_update');
-        Route::get('delete/{id}', [ReservationController::class, 'destroy'])->name('admin_reservation_delete');
-        Route::get('show/{id}', [ReservationController::class, 'show'])->name('admin_reservation_show');
-    });
+        #Message
+        Route::prefix('messages')->group(function () {
+            Route::get('/', [MesajjController::class, 'index'])->name('admin_message');
+            Route::get('edit/{id}', [MesajjController::class, 'edit'])->name('admin_message_edit');
+            Route::post('update/{id}', [MesajjController::class, 'update'])->name('admin_message_update');
+            Route::get('delete/{id}', [MesajjController::class, 'destroy'])->name('admin_message_delete');
+            Route::get('show', [MesajjController::class, 'show'])->name('admin_message_show');
+
+        });
 
 
-    #Style Image Gallery
-    Route::prefix('image')->group(function () {
-        Route::get('create/{style_id}', [\App\Http\Controllers\Admin\ImageController::class, 'create'])->name('admin_image_add');
-        Route::post('store/{style_id}', [\App\Http\Controllers\Admin\ImageController::class, 'store'])->name('admin_image_store');
-        Route::get('delete/{id}/{style_id}', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('admin_image_delete');
-        Route::get('show', [\App\Http\Controllers\Admin\ImageController::class, 'show'])->name('admin_image_show');
-    });
+        #Reservation
+        Route::prefix('reservations')->group(function () {
+            Route::get('/', [ReservationController::class, 'index'])->name('admin_reservations');
+            Route::get('list/{status}', [ReservationController::class, 'list'])->name('admin_reservation_list');
+            Route::get('create', [ReservationController::class, 'create'])->name('admin_reservation_add');
+            Route::post('store', [ReservationController::class, 'store'])->name('admin_reservation_store');
+            Route::get('edit/{id}', [ReservationController::class, 'edit'])->name('admin_reservation_edit');
+            Route::post('update/{id}', [ReservationController::class, 'update'])->name('admin_reservation_update');
+            Route::get('delete/{id}', [ReservationController::class, 'destroy'])->name('admin_reservation_delete');
+            Route::get('show/{id}', [ReservationController::class, 'show'])->name('admin_reservation_show');
+        });
 
 
-    #Review
-    Route::prefix('review')->group(function () {
-        Route::get('/', [ReviewController::class, 'index'])->name('admin_review');
-        Route::post('update/{id}', [ReviewController::class, 'update'])->name('admin_review_update');
-        Route::get('delete/{id}', [ReviewController::class, 'destroy'])->name('admin_review_delete');
-        Route::get('show/{id}', [ReviewController::class, 'show'])->name('admin_review_show');
-    });
+        #Style Image Gallery
+        Route::prefix('image')->group(function () {
+            Route::get('create/{style_id}', [\App\Http\Controllers\Admin\ImageController::class, 'create'])->name('admin_image_add');
+            Route::post('store/{style_id}', [\App\Http\Controllers\Admin\ImageController::class, 'store'])->name('admin_image_store');
+            Route::get('delete/{id}/{style_id}', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('admin_image_delete');
+            Route::get('show', [\App\Http\Controllers\Admin\ImageController::class, 'show'])->name('admin_image_show');
+        });
 
 
-    #Setting
-    Route::get('setting', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin_setting');
-    Route::post('setting/update', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
+        #Review
+        Route::prefix('review')->group(function () {
+            Route::get('/', [ReviewController::class, 'index'])->name('admin_review');
+            Route::post('update/{id}', [ReviewController::class, 'update'])->name('admin_review_update');
+            Route::get('delete/{id}', [ReviewController::class, 'destroy'])->name('admin_review_delete');
+            Route::get('show/{id}', [ReviewController::class, 'show'])->name('admin_review_show');
+        });
 
 
-    #Faq
-    Route::prefix('faq')->group(function () {
-        Route::get('/', [FaqController::class, 'index'])->name('admin_faq');
-        Route::get('create', [FaqController::class, 'create'])->name('admin_faq_add');
-        Route::post('store', [FaqController::class, 'store'])->name('admin_faq_store');
-        Route::get('edit/{id}', [FaqController::class, 'edit'])->name('admin_faq_edit');
-        Route::post('update/{id}', [FaqController::class, 'update'])->name('admin_faq_update');
-        Route::get('delete/{id}', [FaqController::class, 'destroy'])->name('admin_faq_delete');
-        Route::get('show', [FaqController::class, 'show'])->name('admin_faq_show');
-    });
+        #Setting
+        Route::get('setting', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin_setting');
+        Route::post('setting/update', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
 
 
-});
+        #Faq
+        Route::prefix('faq')->group(function () {
+            Route::get('/', [FaqController::class, 'index'])->name('admin_faq');
+            Route::get('create', [FaqController::class, 'create'])->name('admin_faq_add');
+            Route::post('store', [FaqController::class, 'store'])->name('admin_faq_store');
+            Route::get('edit/{id}', [FaqController::class, 'edit'])->name('admin_faq_edit');
+            Route::post('update/{id}', [FaqController::class, 'update'])->name('admin_faq_update');
+            Route::get('delete/{id}', [FaqController::class, 'destroy'])->name('admin_faq_delete');
+            Route::get('show', [FaqController::class, 'show'])->name('admin_faq_show');
+        });
+
+    }); #admin
+
+}); #auth
 
 
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {

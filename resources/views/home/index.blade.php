@@ -125,9 +125,9 @@
                         </div>
                     </div>
                 </div><!-- end row -->
-
             </div><!-- end container -->
         </div><!-- end section -->
+
         <div id="pricing" class="section lb">
             <div class="container">
                 <div class="section-title row text-center">

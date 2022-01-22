@@ -26,13 +26,23 @@
 @guest
     <div class="top-add alert alert-light alert-dismissible">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Hala üye değil misiniz? Hemen üye olun ve fırsatların tadını çıkartın.</strong>
+        <strong>Hala üye değil misiniz? Hemen üye olun ve online rezervasyonun tadını çıkartın.</strong>
     </div>
 @endguest
 <!-- Start header -->
 <header class="top-navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
         <div class="container">
+            <div class="header-search">
+                <form action="{{route('getstyle')}}" method="post" style="position: center">
+                    @csrf
+                    @livewire('search')
+                    <button type="submit" class="search button"><i class="fa fa-search"></i></button>
+                </form>
+                @livewireScripts
+            </div>
+
             <a class="navbar-brand" href="{{route('homepage')}}">
                 <img src="{{ asset('assets')}}/images/logo.png" alt=""/>
             </a>
@@ -42,19 +52,20 @@
                 <span class="icon-bar middle-bar"></span>
                 <span class="icon-bar bottom-bar"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbars-rs-food">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" href="{{route('homepage')}}">Anasayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('homepage')}}">Anasayfa</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('aboutus')}}"> Hakkımızda</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('barbers')}}">Berberlerimiz</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('services')}}">Hizmetler</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('services')}}">Modeller</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('booking')}}">Rezervasyon</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">İletişim</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('faq')}}">SSS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('references')}}">Referanslarımız</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('references')}}">Referanslarımız</a>
                 </ul>
             </div>
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;
             @auth
                 <div class="nav_menu">
                     <nav>
@@ -65,7 +76,8 @@
                             <li class="">
                                 <a href="javascript:;" data-toggle="dropdown" aria-expanded="false">
                                     {{Auth::user()->name }}
-                                    <span class=" fa fa-angle-down"></span>
+                                    <i class="">{{Auth::user()->roles->pluck('name')}}</i> <i
+                                        class="fa fa-level-down"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
                                     <li><a href="{{route('myprofile')}}"> Profile</a></li>

@@ -1,6 +1,6 @@
 @extends('layouts.home')
 
-@section('title','Services - ' .  $setting->title)
+@section('title','Modellerimiz ve Hizmetlerimiz - ' .  $setting->title)
 @section('description'){{$setting->description}} @endsection
 
 @section('keywords', $setting->keywords )
@@ -18,13 +18,13 @@
                             </div>
 
                             <div class="title--heading">
-                                <h1>Our Services</h1>
+                                <h1>Modellerimiz ve Hizmetlerimiz</h1>
                             </div>
                             <div class="clearfix"></div>
 
                             <ol class="breadcrumb">
                                 <li><a href="{{route('homepage')}}">Home</a></li>
-                                <li class="active">Our Services</li>
+                                <li class="active">Modeller</li>
                             </ol>
                         </div>
                         <!-- .title end -->
@@ -35,9 +35,31 @@
 
         <div id="services" class="section lb">
             <div class="container">
+                <h1 align="center"><strong><font face="Fantasy">MODELLERİMİZ</font> </strong></h1> <br>
+                <hr class="grd1">
+                <div class="owl-services owl-carousel owl-theme">
+                    @foreach($styles as $rs)
+                        <div class="service-widget">
+                            <div class="post-media wow fadeIn">
+                                <a href="{{Storage::url($rs->image)}}" data-rel="prettyPhoto[gal]"
+                                   class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                                <img src="{{Storage::url($rs->image)}}" style="height: 350px;" alt=""
+                                     class="img-responsive img-rounded">
+                            </div>
+                            <div class="dit-box">
+                                <h3>{{$rs->title}}</h3>
+                                <br>
+                                <a href="{{route('style',['id' => $rs->id, 'slug' => $rs->slug])}}"
+                                   class="btn btn-light btn-radius btn-brd grd1 effect-1 butn">Style Detail</a>
+                            </div>
+                        </div><!-- end service -->
+                    @endforeach
+                </div>
+
+                <hr class="grd1"><br><br>
+
                 <div class="section-title row text-center">
                     <div class="col-md-8 offset-md-2">
-                        <small>WELCOME TO THE OUR BARBER SHOP</small>
                         <h3>OUR SERVICES</h3>
                         <hr class="grd1">
                         <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim,

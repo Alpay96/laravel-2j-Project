@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use MongoDB\Driver\Session;
 use phpDocumentor\Reflection\DocBlock\Tags\Method;
+use function GuzzleHttp\Promise\all;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,7 @@ class HomeController extends Controller
     {
         $setting = Setting::first();
         $slider = Style::select('id', 'title', 'image', 'slug')->limit(4)->get();
-        $modish = Style::select('id', 'title', 'image', 'slug')->limit(6)->inRandomOrder()->get();
+        $modish = Style::select('id', 'title', 'image', 'slug')->limit(5)->inRandomOrder()->get();
 
         #print_r($modish);
         #exit();
@@ -44,10 +45,16 @@ class HomeController extends Controller
     {
         $data = Style::find($id);
         $datalist = Image::where('style_id', $id)->get();
-        $reviews = \App\Models\Review::where('style_id',$id)->get();
+        $reviews = \App\Models\Review::where('style_id', $id)->get();
         #print_r($data);
         #exit();
         return view('home.style_detail', ['data' => $data, 'datalist' => $datalist, 'reviews' => $reviews]);
+    }
+
+    public function getstyle(Request $request)
+    {
+        $data = Style::where('title', $request->input('search'))->first();
+        return redirect()->route('style', ['id' => $data->id, 'slug' => $data->slug]);
     }
 
     public function aboutus()
@@ -105,7 +112,8 @@ class HomeController extends Controller
     public function services()
     {
         $setting = Setting::first();
-        return view('home.services', ['setting' => $setting]);
+        $styles = Style::select('id', 'title', 'image', 'slug')->get();
+        return view('home.services', ['setting' => $setting, 'styles' => $styles]);
     }
 
     public function booking()
