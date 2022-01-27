@@ -33,15 +33,18 @@
 <header class="top-navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
+        <div class="header-search" style="margin-left: 60px;">
+            <form action="{{route('getstyle')}}" method="post" style="position: center">
+                @csrf
+                @livewire('search')
+                <button type="submit" class="search button"><i class="fa fa-search"></i></button>
+            </form>
+            @livewireScripts
+        </div>
+
+
         <div class="container">
-            <div class="header-search">
-                <form action="{{route('getstyle')}}" method="post" style="position: center">
-                    @csrf
-                    @livewire('search')
-                    <button type="submit" class="search button"><i class="fa fa-search"></i></button>
-                </form>
-                @livewireScripts
-            </div>
+
 
             <a class="navbar-brand" href="{{route('homepage')}}">
                 <img src="{{ asset('assets')}}/images/logo.png" alt=""/>
@@ -65,7 +68,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{route('references')}}">Referanslarımız</a>
                 </ul>
             </div>
-            &emsp;&emsp;&emsp;
+
             @auth
                 <div class="nav_menu">
                     <nav>

@@ -36,7 +36,7 @@
                     <ul class="nav side-menu">
                         <li><a><i class="fa fa-clock-o"></i> Reservations <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
-                                <li><a href="{{route('admin_reservations')}}">Reservations</a></li>
+                                <li><a href="{{route('admin_reservations')}}">All Reservations</a></li>
                                 <li><a href="{{route('admin_reservation_list', ['status'=>'new'])}}">New Reservations</a></li>
                                 <li><a href="{{route('admin_reservation_list', ['status'=>'accepted'])}}">Accepted Reservation</a></li>
                                 <li><a href="{{route('admin_reservation_list', ['status'=>'rejected'])}}">Rejected Reservation</a></li>

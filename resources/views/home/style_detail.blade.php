@@ -14,7 +14,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="title title-1 text-center">
                             <div class="much">
-                                <img src="{{Storage::url($data->image)}}" alt=""/>
+                                <img src="{{Storage::url($data->image)}}" style="height: 750px; width: 800px" alt=""/>
                             </div>
                             <div class="title--heading">
                                 <h1>Style Detail</h1>
@@ -46,11 +46,16 @@
                                     </div>
                                     <div class="dit-box">
                                         <h3>{{$data->title}}</h3>
-                                        <h2>{!! $data->detail !!}</h2>
+
                                     </div>
+
                                 </div><!-- end service -->
                             @endforeach
+
+
                         </div>
+                        <br> <hr>
+                        <h2>{!! $data->detail !!}</h2>
                     </div><!-- end col -->
                 </div><!-- end row -->
 
